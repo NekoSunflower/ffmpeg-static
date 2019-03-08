@@ -210,6 +210,12 @@ download \
   "Speex-1.2.0.tar.gz" \
   "4bec86331abef56129f9d1c994823f03" \
   "https://github.com/xiph/speex/archive/"
+  
+download \
+  "v4.3.1.tar.gz" \
+  "libzmq-v4.3.1.tar.gz" \
+  "nil" \
+  "https://github.com/zeromq/libzmq/archive/"
 
 download \
   "n4.0.tar.gz" \
@@ -411,6 +417,14 @@ cd $BUILD_DIR/speex*
 make -j $jval
 make install
 
+echo "*** Building libspeex ***"
+cd $BUILD_DIR/libzmq*
+[ $rebuild -eq 1 -a -f Makefile ] && make distclean || true
+./autogen.sh
+./configure --prefix=$TARGET_DIR --disable-shared
+make -j $jval
+make install
+
 # FFMpeg
 echo "*** Building FFmpeg ***"
 cd $BUILD_DIR/FFmpeg*
@@ -455,7 +469,8 @@ if [ "$platform" = "linux" ]; then
     --enable-libxvid \
     --enable-libzimg \
     --enable-nonfree \
-    --enable-openssl
+    --enable-openssl \
+    --enable-libzmq
 elif [ "$platform" = "darwin" ]; then
   [ ! -f config.status ] && PATH="$BIN_DIR:$PATH" \
   PKG_CONFIG_PATH="${TARGET_DIR}/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/Cellar/openssl/1.0.2o_1/lib/pkgconfig" ./configure \
@@ -493,7 +508,8 @@ elif [ "$platform" = "darwin" ]; then
     --enable-libxvid \
     --enable-libzimg \
     --enable-nonfree \
-    --enable-openssl
+    --enable-openssl \
+    --enable-libzmq
 fi
 
 PATH="$BIN_DIR:$PATH" make -j $jval
