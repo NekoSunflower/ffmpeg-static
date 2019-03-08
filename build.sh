@@ -103,12 +103,6 @@ download \
   "https://github.com/madler/zlib/archive/"
 
 download \
-  "last_x264.tar.bz2" \
-  "" \
-  "nil" \
-  "http://download.videolan.org/pub/videolan/x264/snapshots/"
-
-download \
   "x265_2.7.tar.gz" \
   "" \
   "b0d7d20da2a418fa4f53a559946ea079" \
@@ -119,19 +113,6 @@ download \
   "fdk-aac.tar.gz" \
   "223d5f579d29fb0d019a775da4e0e061" \
   "https://github.com/mstorsjo/fdk-aac/archive"
-
-# libass dependency
-download \
-  "harfbuzz-1.4.6.tar.bz2" \
-  "" \
-  "e246c08a3bac98e31e731b2a1bf97edf" \
-  "https://www.freedesktop.org/software/harfbuzz/release/"
-
-download \
-  "fribidi-1.0.2.tar.bz2" \
-  "" \
-  "bd2eb2f3a01ba11a541153f505005a7b" \
-  "https://github.com/fribidi/fribidi/releases/download/v1.0.2/"
 
 download \
   "0.13.6.tar.gz" \
@@ -222,6 +203,25 @@ download \
   "ffmpeg4.0.tar.gz" \
   "4749a5e56f31e7ccebd3f9924972220f" \
   "https://github.com/FFmpeg/FFmpeg/archive"
+
+download \
+  "last_x264.tar.bz2" \
+  "" \
+  "nil" \
+  "http://download.videolan.org/pub/videolan/x264/snapshots/"
+
+# libass dependency
+download \
+  "harfbuzz-1.4.6.tar.bz2" \
+  "" \
+  "e246c08a3bac98e31e731b2a1bf97edf" \
+  "https://www.freedesktop.org/software/harfbuzz/release/"
+
+download \
+  "fribidi-1.0.2.tar.bz2" \
+  "" \
+  "bd2eb2f3a01ba11a541153f505005a7b" \
+  "https://github.com/fribidi/fribidi/releases/download/v1.0.2/"
 
 [ $download_only -eq 1 ] && exit 0
 
